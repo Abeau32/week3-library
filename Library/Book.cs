@@ -9,6 +9,15 @@ namespace Library
         public string Title;
         public string Author;
         public int ISBN;
+
+        // Parameterless constructor
+        public Book(string booktitle, string bookauthor, int bookISBN)
+        {
+            Title = booktitle;
+            Author = bookauthor;
+            ISBN = bookISBN;
+        }
+
         public void DisplayInfo()
         {
             Console.WriteLine($"Book Title: {Title}");
