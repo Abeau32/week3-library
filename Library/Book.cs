@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Library
 {
@@ -16,7 +17,18 @@ namespace Library
         public string Title
         {
             get { return _title; }
-            set { _title = value; }
+            set 
+            {
+                if (!value.Any(char.IsDigit))
+                {
+                    _title = value;
+                }
+                else 
+                {
+                    Console.WriteLine("Title cannot contain numbers.");
+                }
+            
+            }
         }
 
         public string Author
@@ -25,18 +37,18 @@ namespace Library
             set { _author = value; }
         }
 
-        public string ISBN
+        // Make ISBN an int property
+        public int ISBN
         {
-            get { return _isbn.ToString(); }
-            set { _isbn = int.Parse(value); }
+            get { return _isbn; }
+            set { _isbn = value; }
         }
         //Constructors 
         public Book(string booktitle, string bookauthor, int bookISBN)
         {
             Title = booktitle;
             Author = bookauthor;
-            ISBN = bookISBN;
-
+            _isbn = bookISBN;    // ← changed: assign backing field (int) directly
         }
 
         //Methods
